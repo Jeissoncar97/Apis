@@ -1,45 +1,63 @@
 *{
     margin: 0;
     padding: 0;
+    text-decoration: none;
 }
 :root{
-    --fondo--: #f8f8ff ;
+    --fondoLigth--: #dbdbe3 ;
+    --fondoDrack--: #121528;
     --blue-claro--: #5ecbdc;
     --blue-oscuro--: #069cb8;
     --prymary--: #069cb8;
     --secondary--: #dc6f5e;
+
 }
 body{
-    max-width: 1300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 0 auto;
-    background-color: var(--fondo--);
+    background-color: var(--fondoLigth--);
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
-    position: relative;
+}
+header {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    max-width: 500px;
+    width: 100%;
+    top: 0;
+    position: sticky;
 }
 .navbar{
-    position: sticky;
-    width: 60%;
-    margin: 0 auto;
+    width: 100%;
     height: auto;
     background-color: white;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 20px 40px;
-    border-radius: 0 0 50px 50px;
-    color: black;
+    border-radius: 0 0 10px 10px;
+    animation: enhance-header linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 200px;
 }
-header{
-    position: relative;
+@keyframes enhance-header {
+    to{
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+        font-size: 0.8em;
+
+    }
 }
-a{
-    text-decoration: none;
-}
-.navbar h3 a{
+
+.navbar h2 a{
     color: var(--secondary--);
+    padding-left: 20px;
 }
 .navbar .links {
     display: flex;
+    padding-right: 20px;
 }
 .navbar .links a{
     display: flex;
@@ -56,6 +74,9 @@ a{
 .navbar .links i{
     font-size: 25px;
 }
-.eje{
-    width: 40px;
+main{
+    padding-top: 50px;
+    max-width: 1000px ;
+    margin: 0 auto;
+    background-color: red;
 }
