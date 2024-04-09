@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 :root{
     --fondoLigth--: #dbdbe3 ;
@@ -12,6 +12,7 @@
     --secondary--: #dc6f5e;
 
 }
+
 body{
     display: flex;
     flex-direction: column;
@@ -20,6 +21,7 @@ body{
     background-color: var(--fondoLigth--);
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
+    animation: background-color .5s ease;
 }
 header {
     display: flex;
@@ -33,7 +35,6 @@ header {
 .navbar{
     width: 100%;
     height: auto;
-    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -74,9 +75,26 @@ header {
 .navbar .links i{
     font-size: 25px;
 }
+.navbar .links .moon, .navbar .links .sun{
+    font-size: 20px;
+    padding: 0 10px;
+}
+button{
+    background-color: var(--prymary--);
+    color: var(--secondary--);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
 main{
-    padding-top: 50px;
-    max-width: 1000px ;
+    max-width: 1100px ;
     margin: 0 auto;
-    background-color: red;
+    text-align: center;
+}
+main h1{
+    padding: 40px;
+}
+section {
+    padding-top: 100px;
 }

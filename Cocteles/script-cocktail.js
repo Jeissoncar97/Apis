@@ -4,8 +4,15 @@ const btn = document.querySelector(".btn-letra");
 const resultadosContainer = document.querySelector(".resultados");
 let contador = 1
 
-btn.addEventListener("click", () => {
-    const letra = letraInput.value; // Obtener el valor del input
+btn.addEventListener("click", obtenerCocteles);
+letraInput.addEventListener("keydown", function(event){
+   if (event.key === "Enter") {
+    obtenerCocteles();
+   } 
+});
+
+function obtenerCocteles(){
+    const letra = letraInput.value; // Obtener el valor del input keyup
     fetch(url + letra)
         .then(response => response.json())
         .then(data => {
@@ -45,7 +52,8 @@ btn.addEventListener("click", () => {
                 <p>Error Puebe con otra letra</p>
             `;
         });
-});
+}
+
 
 const url2 = "https://es.libretranslate.com/translate"
 
