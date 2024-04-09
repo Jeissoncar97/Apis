@@ -12,64 +12,81 @@
     <title>Pagina de apis</title>
 </head>
 
-<body>
+<body class="back">
     <header>
-        <div class="navbar">
+        <div class="navbar back2">
             <h2><a href="#">Jeisson Cardenas </a></h2>
             <div class="links">
-                <a href="https://www.linkedin.com/in/jeisson-cardenas/"><i class=" fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/Jeissoncar97/Apis"><i class="fa-brands fa-github"></i></a>
-                <a href="mailto:jeissoncar97@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/jeisson-cardenas/"><i class="bi bi-linkedin"></i></i></a>
+                <a href="https://github.com/Jeissoncar97/Apis"><i class="bi bi-github"></i></a>
+                <a href="mailto:jeissoncar97@gmail.com"><i class="bi bi-envelope-at"></i></a>
                 <button class="btn rounded-fill p-0" onclick="cambiarTema()"><i id="dl-icon"
                         class="bi bi-moon-fill moon"></i></button>
             </div>
         </div>
     </header>
     <main>
-        <h1>Paginas hechas con apis</h1>
-        <p>Disfruta de las diferentes paginas que he realizado usando diferentes apis, si quieres saber mas no dudes en
-            contactarme</p>
+        <div class="header-main">
+            <h1>Paginas hechas con apis</h1>
+            <p>Disfruta de las diferentes paginas que he realizado usando diferentes apis, si quieres saber mas no dudes
+                en
+                contactarme</p>
+        </div>
 
         <section class="homeCards">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <div class="col ml-5">
+                    <div class="card">
+                        <img src="./img/cocteles-main.webp" class="card-img-top" alt="...">
+                        <div class="card-body ">
+                            <h5 class="card-title ">Cócteles</h5>
+                            <p class="card-text">Aquí encontrarás todos los cócteles que existen. Podrás ver los
+                                <strong>ingredientes y las recetas</strong>.
+                            </p>
+                            <a href="./Cocteles/cocktail.html" class="btn">Conoce más <i
+                                    class="bi bi-arrow-right-short"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="./img/pokedex.webp" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Pokédex</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.</p>
+                            <a href="#" class="btn aunNo">Conoce más <i class="bi bi-arrow-right-short"></i></a>
 
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card" style="width: 18rem;">
-                        <img src="./img/cocteles-main.webp" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card">
                         <img src="./img/cocteles-main.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                                to additional content.</p>
+                            <a href="#" class="btn aunNo">Conoce más <i class="bi bi-arrow-right-short"></i></a>
+
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card">
                         <img src="./img/cocteles-main.webp" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
-                                of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.</p>
+                            <a href="#" class="btn aunNo">Conoce más <i class="bi bi-arrow-right-short"></i></a>
+
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
     <script src="./index.js"></script>
 </body>
 

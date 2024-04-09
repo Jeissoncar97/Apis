@@ -3,11 +3,13 @@
     padding: 0;
     text-decoration: none !important;
 }
+
 :root{
-    --fondoLigth--: #dbdbe3 ;
+    --body-bg: #f5f5fc ;
+    --fondoLight--: #d7d7dc;
     --fondoDrack--: #121528;
     --blue-claro--: #5ecbdc;
-    --blue-oscuro--: #069cb8;
+    --blue-oscuro--: #005f84;
     --prymary--: #069cb8;
     --secondary--: #dc6f5e;
 
@@ -18,10 +20,17 @@ body{
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
-    background-color: var(--fondoLigth--);
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
-    animation: background-color .5s ease;
+}
+.back{
+    background-color: var(--fondoLight--) !important;
+}
+.back2{
+    background-color: white;
+}
+.backdark{
+    background-color: #131517;
 }
 header {
     display: flex;
@@ -31,24 +40,25 @@ header {
     width: 100%;
     top: 0;
     position: sticky;
+    z-index: 2;
 }
 .navbar{
     width: 100%;
     height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     border-radius: 0 0 10px 10px;
     animation: enhance-header linear both;
     animation-timeline: scroll(root block);
     animation-range: 0 200px;
 }
+.card-body{
+    background-color: white;
+}
+
 @keyframes enhance-header {
     to{
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(140, 140, 140, 0.1);
         backdrop-filter: blur(5px);
         font-size: 0.8em;
-
     }
 }
 
@@ -77,15 +87,11 @@ header {
 }
 .navbar .links .moon, .navbar .links .sun{
     font-size: 20px;
-    padding: 0 10px;
+    padding: 0px 10px;
 }
-button{
-    background-color: var(--prymary--);
-    color: var(--secondary--);
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    cursor: pointer;
+
+.header-main{
+    padding: 0 10%;
 }
 main{
     max-width: 1100px ;
@@ -96,5 +102,42 @@ main h1{
     padding: 40px;
 }
 section {
-    padding-top: 100px;
+    padding: 50px 30px;
+
+}
+.card-body h5{
+    color: var(--secondary--);
+}
+.card-body .btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px !important;
+    border: 3px solid var(--blue-oscuro--);
+    color: var(--blue-oscuro--);
+    font-size: 1.5rem;
+}
+.card-body .btn i{
+    font-size: 2rem;
+    color: var(--secondary--);
+}
+.card-body .btn:hover{
+    background-color: var(--blue-oscuro--);
+    color: white !important;
+}
+.aunNo{
+    cursor: no-drop !important;
+}
+@media (max-width: 700px) {
+    section{
+        margin: 0 auto !important;
+        padding: 50px 0;
+    }
+    .navbar{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .links{
+        padding-right: 0 !important;
+    }
 }
