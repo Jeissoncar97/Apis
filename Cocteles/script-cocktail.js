@@ -31,10 +31,10 @@ function obtenerCocteles(){
                     instructions = coctel.strInstructions
                 }
                 html += `
-                    <div>
+                    <div class = "resultado">
                         <h2>${contador}. ${coctel.strDrink}</h2>
-                        <p>Categoría: ${coctel.strCategory}</p>
-                        <p>Instrucciones: ${instructions}</p>
+                        <p><strong>Categoría: </strong>${coctel.strCategory}</p>
+                        <p><strong>Instrucciones: </strong>${instructions}</p>
                         <img src="${coctel.strDrinkThumb}" alt="coctel">
                         
                     </div>

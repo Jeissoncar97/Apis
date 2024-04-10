@@ -11,21 +11,29 @@
     <div class="navbar">
         <p>filto por: </p>
         <ul>
-            <li>primer letra</li>
-            <li>nombre</li>
+            <li id="por-letra">primer letra</li>
+            <li id="por-nombre">nombre</li>
         </ul>
     </div>
-    <div class="contenedor contenedor-porLetra active">
-        <p>Ingrese la letra de la cual quieres consultar los cocteles (Tambien número)</p>
-        <input class="letra-coctel" type="text" maxlength="1">
-        <button class="btn-letra">buscar</button>
-        <div class="resultados"></div>
+    <div class="contenedor-general contenedor-porLetra active">
+        <div class="contenedor">
+            <p>Ingrese la letra de la cual quieres consultar los cocteles (Tambien número)</p>
+            <input class="letra-coctel" type="text" maxlength="1">
+            <button class="btn-letra">buscar</button>
+            <div class="contenedor-resultado">
+                <div class="resultados"></div>
+            </div>
+        </div>
     </div>
-    <div class="contenedor contenedor-porNombre">
-        <p>Ingrese el nombre de la cual quieres consultar los cocteles</p>
-        <input class="nombre-coctel" type="text" maxlength="20">
-        <button class="btn-nombre">buscar</button>
-        <div class="resultados"></div>
+    <div class="contenedor-general contenedor-porNombre">
+        <div class="contenedor ">
+            <p>Ingrese el nombre de la cual quieres consultar los cocteles</p>
+            <input class="nombre-coctel" type="text" maxlength="20">
+            <button class="btn-nombre">buscar</button>
+            <div class="contenedor-resultado">
+                <div class="resultados"></div>
+            </div>
+        </div>
     </div>
     <script src="./script-cocktail.js"></script>
 </body>
