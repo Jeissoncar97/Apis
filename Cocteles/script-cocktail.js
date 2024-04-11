@@ -68,6 +68,8 @@ function obtenerCocteles1(url1){
                 contador++
             });
             resultadosContainer1.innerHTML = html;
+            contador = 0
+
         })
         .catch(error => {
             let html = '';
@@ -92,7 +94,7 @@ nombreInput.addEventListener("keydown", function(event){
 });
 
 function obtenerCocteles2(url2){
-    
+    contador = 1
     const nombre = nombreInput.value; // Obtener el valor del input keyup
     console.log(url2+nombre);
     fetch(url2 + nombre)

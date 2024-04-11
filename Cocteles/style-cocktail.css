@@ -12,7 +12,7 @@
     --fondoDrack--: #121528;
     --blue-claro--: #5ecbdc;
     --blue-oscuro--: #005f84;
-    --prymary--: #069cb8;
+    --primary--: #069cb8;
     --secondary--: #dc6f5e;
 }
 body{
@@ -22,7 +22,7 @@ body{
     flex-direction: column;
     max-width: 1400px;
     margin  : 0 auto;
-    background-color: var(--fondoLight--);
+    background-color: var(--body-bg);
 }
 .contenedor-general{
     display: none;
@@ -36,7 +36,45 @@ h1{
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 20px;
+    color: var(--secondary--);
 }
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar p{
+    margin: 10px;
+}
+.navbar ul{
+    display: flex;
+}
+
+.navbar ul li{
+    width: 120px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--primary--);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+.navbar ul li:hover{
+    background-color: white;
+    color: var(--primary--);
+    animation: color .3 ease;
+    animation: background .3 ease;
+    border: 1px solid var(--primary--);
+}
+
 .contenedor-general .resultado1,.contenedor-general .resultado2 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
