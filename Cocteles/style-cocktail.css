@@ -31,17 +31,13 @@ body{
     display: block;
 
 }
-.resultado img{
-    width: 200px;
-    height: 200px;
-}
 
 h1{
     font-size: 40px;
     font-weight: 700;
     margin-bottom: 20px;
 }
-.contenedor-general .resultados {
+.contenedor-general .resultado1,.contenedor-general .resultado2 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
     gap: 20px;
@@ -50,4 +46,8 @@ h1{
     background-color: white;
     padding: 15px;
     border-radius: 10px;
+}
+.resultado1 img,.resultado2 img{
+    width: 200px;
+    height: 200px;
 }
