@@ -20,7 +20,7 @@ body{
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    max-width: 1400px;
+    max-width: 1260px;
     margin  : 0 auto;
     background-color: var(--body-bg);
 }
@@ -106,8 +106,10 @@ h1{
 }
 .contenedor-general .resultado1,.contenedor-general .resultado2, .contenedor-general .resultado3{
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
     gap: 20px;
+    margin: 0 20px;
 }
 .resultado{
     display: flex;
@@ -130,6 +132,5 @@ h1{
 }
 @media (max-width : 768px) {
     .resultado {
-        margin: 0 20px;
     }
 }
