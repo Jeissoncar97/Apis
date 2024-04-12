@@ -33,10 +33,11 @@ body{
 }
 
 h1{
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 700;
     margin-bottom: 20px;
     color: var(--secondary--);
+    margin: 50px 0;
 }
 
 .navbar{
@@ -47,6 +48,7 @@ h1{
 
 .navbar p{
     margin: 10px;
+    font-size: 18px;
 }
 .navbar ul{
     display: flex;
@@ -65,27 +67,69 @@ h1{
     padding: 10px;
     cursor: pointer;
     margin: 20px;
+    transition: background-color .3s ease;
 }
 
 .navbar ul li:hover{
     background-color: white;
     color: var(--primary--);
     animation: color .3 ease;
-    animation: background .3 ease;
     border: 1px solid var(--primary--);
 }
-
-.contenedor-general .resultado1,.contenedor-general .resultado2 {
+.contenedor p{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.contenedor input{
+    width: 300px;
+    height: 40px;
+    border-radius: 40px;
+    border: 1px solid #dfe1e5;
+    background-color: white;
+    color: #000;
+    padding: 20px;
+    margin: 20px;
+    transition: all .2s ease;
+}
+.contenedor input:hover{
+    box-shadow: 2px 2px 5px #dfe1e5;
+}
+.contenedor input:focus{
+    outline: none;
+}
+.navbar ul .active-a{
+    
+    background-color: white;
+    color: var(--primary--);
+    animation: color .3 ease;
+    border: 1px solid var(--primary--);
+}
+.contenedor-general .resultado1,.contenedor-general .resultado2, .contenedor-general .resultado3{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
     gap: 20px;
 }
 .resultado{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+    align-items: center;
     background-color: white;
     padding: 15px;
     border-radius: 10px;
 }
-.resultado1 img,.resultado2 img{
-    width: 200px;
-    height: 200px;
+.resultado p{
+    font-size: 15px;
+    margin: 10px 0;
+}
+.resultado img{
+    padding-top: 10px;
+    width: 220px;
+
+}
+@media (max-width : 768px) {
+    .resultado {
+        margin: 0 20px;
+    }
 }

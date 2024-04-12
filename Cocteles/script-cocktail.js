@@ -1,14 +1,39 @@
 const contenedorporNombre = document.querySelectorAll(".contenedor-general.porNombre");
 const contenedorporLetra = document.querySelectorAll(".contenedor-general.porLetra");
+const contenedoraleatorio = document.querySelectorAll(".contenedor-general.aleatorio");
 const liPorLetra = document.querySelector("#por-letra");
 const liPorNombre = document.querySelector("#por-nombre");
+const liAleatorio = document.querySelector("#aleatorio");
+const liPL = document.querySelector("#por-letra li");
+const liPN = document.querySelector("#por-nombre li");
+const liA = document.querySelector("#aleatorio li");
+const url1 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=";
+const url2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
+const url3 = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+const letraInput = document.querySelector(".letra-coctel");
+const nombreInput = document.querySelector(".nombre-coctel");
+const btn1 = document.querySelector(".btn1");
+const btn2 = document.querySelector(".btn2");
+const btn3 = document.querySelector(".btn3");
+const resultadosContainer1 = document.querySelector(".resultado1");
+const resultadosContainer2 = document.querySelector(".resultado2");
+const resultadosContainer3 = document.querySelector(".resultado3");
+let contador = 1
+
+
 
 liPorLetra.addEventListener("click", () => { 
     contenedorporLetra.forEach(element => {
         element.classList.add("active");
+        liPL.classList.add("active-a");
+        liPN.classList.remove("active-a");
+        liA.classList.remove("active-a");
     });
 
     contenedorporNombre.forEach(element => {
+        element.classList.remove("active");
+    });
+    contenedoraleatorio.forEach(element => {
         element.classList.remove("active");
     });
 });
@@ -16,87 +41,56 @@ liPorLetra.addEventListener("click", () => {
 liPorNombre.addEventListener("click", () => {
     contenedorporNombre.forEach(element => {
         element.classList.add("active");
+        liPN.classList.add("active-a");
+        liPL.classList.remove("active-a");
+        liA.classList.remove("active-a");
     });
     
     contenedorporLetra.forEach(element => {
         element.classList.remove("active");
     });
+    contenedoraleatorio.forEach(element => {
+        element.classList.remove("active");
+    });
+
 });
+liAleatorio.addEventListener("click", () => {
+    contenedoraleatorio.forEach(element => {
+        element.classList.add("active");
+        liA.classList.add("active-a");
+        liPL.classList.remove("active-a");
+        liPN.classList.remove("active-a");
+    });
+    
+    contenedorporLetra.forEach(element => {
+        element.classList.remove("active");
 
-
-
-const url1 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=";
-const letraInput = document.querySelector(".letra-coctel");
-const btn1 = document.querySelector(".btn1");
-const resultadosContainer1 = document.querySelector(".resultado1");
-let contador = 1
-
-btn1.addEventListener("click", ()=> {obtenerCocteles1(url1)});
+    });
+    contenedorporNombre.forEach(element => {
+        element.classList.remove("active");
+    });
+    
+});
+btn1.addEventListener("click", ()=> {obtenerCocteles(url1,letraInput,resultadosContainer1)});
 letraInput.addEventListener("keydown", function(event){
    if (event.key === "Enter") {
-    obtenerCocteles1(url1);
+    obtenerCocteles(url1,letraInput,resultadosContainer1);
    } 
 });
-
-function obtenerCocteles1(url1){
-    const letra = letraInput.value; // Obtener el valor del input keyup
-    fetch(url1 + letra)
-        .then(response => response.json())
-        .then(data => {
-            
-            const cocteles = data.drinks;
-            let html = '';
-            resultadosContainer1.innerHTML = '';
-            
-            cocteles.forEach(coctel => {
-                let instructions
-                if (coctel.strInstructionsES != undefined)
-                {
-                    instructions = coctel.strInstructionsES
-                }else {
-                    instructions = coctel.strInstructions
-                }
-                html += `
-                    <div class="resultado">
-                        <h2>${contador}. ${coctel.strDrink}</h2>
-                        <p><strong>Categoría: </strong>${coctel.strCategory}</p>
-                        <p><strong>Instrucciones: </strong>${instructions}</p>
-                        <img src="${coctel.strDrinkThumb}" alt="coctel">
-                        
-                    </div>
-                `;
-                contador++
-            });
-            resultadosContainer1.innerHTML = html;
-            contador = 0
-
-        })
-        .catch(error => {
-            let html = '';
-            resultadosContainer.innerHTML = '';
-            html += `
-                <p>Error Puebe con otra letra</p>
-            `;
-        });
-}
-
-const url2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-const nombreInput = document.querySelector(".nombre-coctel");
-const btn2 = document.querySelector(".btn2");
-const resultadosContainer2 = document.querySelector(".resultado2");
-
-
-btn2.addEventListener("click", ()=> {obtenerCocteles2(url2)});
+btn2.addEventListener("click", ()=> {obtenerCocteles(url2,nombreInput,resultadosContainer2)});
 nombreInput.addEventListener("keydown", function(event){
    if (event.key === "Enter") {
-    obtenerCocteles2(url2);
+    obtenerCocteles(url2,nombreInput,resultadosContainer2);
    } 
 });
 
-function obtenerCocteles2(url2){
-    contador = 1
-    const nombre = nombreInput.value; // Obtener el valor del input keyup
-    console.log(url2+nombre);
+btn3.addEventListener("click", ()=> {
+    obtenerCoctelesAleatorio(url3, resultadosContainer3)
+});
+
+
+function obtenerCocteles(url2,input,resultadosContainer){
+    const nombre = input.value;     
     fetch(url2 + nombre)
         .then(response => response.json())
         .then(data => {
@@ -104,7 +98,7 @@ function obtenerCocteles2(url2){
             const cocteles = data.drinks;
             console.log(cocteles)
             let html = '';
-            resultadosContainer2.innerHTML = '';
+            resultadosContainer.innerHTML = '';
             
             cocteles.forEach(coctel => {
                 let instructions
@@ -116,26 +110,52 @@ function obtenerCocteles2(url2){
                 }
                 html += `
                     <div class="resultado">
-                        <h2>${contador}. ${coctel.strDrink}</h2>
+                        <h2>${coctel.strDrink}</h2>
                         <p><strong>Categoría: </strong>${coctel.strCategory}</p>
                         <p><strong>Instrucciones: </strong>${instructions}</p>
                         <img src="${coctel.strDrinkThumb}" alt="coctel">
                         
                     </div>
                 `;
-                contador++
                
             });
 
-            resultadosContainer2.innerHTML = html;
+            resultadosContainer.innerHTML = html;
         })
         .catch(error => {
-            let html = '';
-            resultadosContainer2.innerHTML = '';
-            html += `
-                <p>Error Puebe con otra letra</p>
-            `;
-        
-            
+            console.log(error);
         });
+}
+
+
+function obtenerCoctelesAleatorio(url, resultadosContainer){
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        const cocteles = data.drinks;
+        console.log(cocteles.strDrink);
+        let html = '';
+        resultadosContainer.innerHTML = '';
+        
+        cocteles.forEach(coctel => {
+            let instructions
+            if (coctel.strInstructionsES != undefined)
+            {
+                instructions = coctel.strInstructionsES
+            }else {
+                instructions = coctel.strInstructions
+            }
+            html += `
+                <div class="resultado">
+                    <h2>${coctel.strDrink}</h2>
+                    <p><strong>Categoría: </strong>${coctel.strCategory}</p>
+                    <p><strong>Instrucciones: </strong>${instructions}</p>
+                    <img src="${coctel.strDrinkThumb}" alt="coctel">
+                    
+                </div>
+            `;
+
+        });
+        resultadosContainer.innerHTML = html;
+    })
 }
