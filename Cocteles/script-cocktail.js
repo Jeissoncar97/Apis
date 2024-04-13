@@ -5,7 +5,7 @@ const contenedorConAlcohol = document.querySelectorAll(".contenedor-general.conA
 const liPorLetra = document.querySelector("#por-letra");
 const liPorNombre = document.querySelector("#por-nombre");
 const liAleatorio = document.querySelector("#aleatorio");
-const liConAlcohol = document.querySelecto("#con-alcohol");
+const liConAlcohol = document.querySelector("#con-alcohol");
 const liPL = document.querySelector("#por-letra li");
 const liPN = document.querySelector("#por-nombre li");
 const liA = document.querySelector("#aleatorio li");
@@ -19,7 +19,6 @@ const nombreInput = document.querySelector(".nombre-coctel");
 const btn1 = document.querySelector(".btn1");
 const btn2 = document.querySelector(".btn2");
 const btn3 = document.querySelector(".btn3");
-const btn4 = document.querySelector(".btn4");
 const resultadosContainer1 = document.querySelector(".resultado1");
 const resultadosContainer2 = document.querySelector(".resultado2");
 const resultadosContainer3 = document.querySelector(".resultado3");
@@ -33,6 +32,7 @@ liPorLetra.addEventListener("click", () => {
         liPL.classList.add("active-a");
         liPN.classList.remove("active-a");
         liCA.classList.remove("active-a");
+        liA.classList.remove("active-a");
     });
 
     contenedorporNombre.forEach(element => {
@@ -41,6 +41,9 @@ liPorLetra.addEventListener("click", () => {
     contenedoraleatorio.forEach(element => {
         element.classList.remove("active");
     });
+    contenedorConAlcohol.forEach(element => {
+        element.classList.remove("active");
+    })
 });
 
 liPorNombre.addEventListener("click", () => {
@@ -58,8 +61,11 @@ liPorNombre.addEventListener("click", () => {
     contenedoraleatorio.forEach(element => {
         element.classList.remove("active");
     });
+    contenedorConAlcohol.forEach(element => {
+        element.classList.remove("active");
+    }
 
-});
+)});
 liAleatorio.addEventListener("click", () => {
     contenedoraleatorio.forEach(element => {
         element.classList.add("active");
@@ -76,12 +82,16 @@ liAleatorio.addEventListener("click", () => {
     contenedorporNombre.forEach(element => {
         element.classList.remove("active");
     });
+    contenedorConAlcohol.forEach(element => {
+        element.classList.remove("active");
+    })
     
 });
 liConAlcohol.addEventListener("click", () => {
-    contenedoraleatorio.forEach(element => {
+    contenedorConAlcohol.forEach(element => {
         element.classList.add("active");
-        liA.classList.add("active-a");
+        liCA.classList.add("active-a");
+        liA.classList.remove("active-a");
         liPL.classList.remove("active-a");
         liPN.classList.remove("active-a");
     });
@@ -93,6 +103,9 @@ liConAlcohol.addEventListener("click", () => {
     contenedorporNombre.forEach(element => {
         element.classList.remove("active");
     });
+    contenedoraleatorio.forEach(element =>{
+        element.classList.remove("active");
+    })
     
 });
 btn1.addEventListener("click", ()=> {obtenerCocteles(url1,letraInput,resultadosContainer1)});
@@ -108,12 +121,15 @@ nombreInput.addEventListener("keydown", function(event){
     console.log(typeof nombreInput);
    } 
 });
-
+liA.addEventListener("click", ()=> {
+    obtenerCoctelesAleatorio(url3, resultadosContainer3)
+});
 btn3.addEventListener("click", ()=> {
     obtenerCoctelesAleatorio(url3, resultadosContainer3)
 });
-
-
+liCA.addEventListener("click", () => {
+    obtenerCoctelesConsinAlcohol(url4, resultadosContainer4);
+});
 function obtenerCocteles(url2,input,resultadosContainer){
     const nombre = input.value;     
     fetch(url2 + nombre)
@@ -161,7 +177,6 @@ function obtenerCoctelesAleatorio(url, resultadosContainer){
         resultadosContainer.innerHTML = '';
         
         cocteles.forEach(coctel => {
-            let instructions
             if (coctel.strInstructionsES != undefined)
             {
                 instructions = coctel.strInstructionsES
@@ -180,5 +195,28 @@ function obtenerCoctelesAleatorio(url, resultadosContainer){
 
         });
         resultadosContainer.innerHTML = html;
+    })
+}
+
+function obtenerCoctelesConsinAlcohol(url, resultadosContainer){
+    fetch(url)
+    .then(respose =>respose.json())
+    .then(data => {
+        const cocteles = data.drinks;
+        console.log(cocteles)
+        let html = '';
+        resultadosContainer.innerHTML = '';
+        
+        cocteles.forEach(coctel => {
+            html += `
+                <div class="resultado">
+                    <h2>${coctel.strDrink}</h2>
+                    <img src="${coctel.strDrinkThumb}" alt="coctel">
+                    
+                </div>
+            `;
+        })
+        resultadosContainer.innerHTML = html;
+
     })
 }
