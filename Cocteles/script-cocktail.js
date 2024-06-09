@@ -2,18 +2,22 @@ const contenedorporNombre = document.querySelectorAll(".contenedor-general.porNo
 const contenedorporLetra = document.querySelectorAll(".contenedor-general.porLetra");
 const contenedoraleatorio = document.querySelectorAll(".contenedor-general.aleatorio");
 const contenedorConAlcohol = document.querySelectorAll(".contenedor-general.conAlcohol");
+const contenedorSinAlcohol = document.querySelectorAll(".contenedor-general.sinAlcohol");
 const liPorLetra = document.querySelector("#por-letra");
 const liPorNombre = document.querySelector("#por-nombre");
 const liAleatorio = document.querySelector("#aleatorio");
 const liConAlcohol = document.querySelector("#con-alcohol");
+const liSinAlcohol = document.querySelector("#sin-alcohol");
 const liPL = document.querySelector("#por-letra li");
 const liPN = document.querySelector("#por-nombre li");
 const liA = document.querySelector("#aleatorio li");
 const liCA = document.querySelector("#con-alcohol li");
+const liSA = document.querySelector("#sin-alcohol li");
 const url1 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=";
 const url2 = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 const url3 = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
 const url4 = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic"
+const url5 = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic"
 const letraInput = document.querySelector(".letra-coctel");
 const nombreInput = document.querySelector(".nombre-coctel");
 const btn1 = document.querySelector(".btn1");
@@ -23,6 +27,7 @@ const resultadosContainer1 = document.querySelector(".resultado1");
 const resultadosContainer2 = document.querySelector(".resultado2");
 const resultadosContainer3 = document.querySelector(".resultado3");
 const resultadosContainer4 = document.querySelector(".resultado4");
+const resultadosContainer5 = document.querySelector(".resultado5");
 let contador = 1
 
 
@@ -33,6 +38,7 @@ liPorLetra.addEventListener("click", () => {
         liPN.classList.remove("active-a");
         liCA.classList.remove("active-a");
         liA.classList.remove("active-a");
+        liSA.classList.remove("active-a");
     });
 
     contenedorporNombre.forEach(element => {
@@ -42,6 +48,9 @@ liPorLetra.addEventListener("click", () => {
         element.classList.remove("active");
     });
     contenedorConAlcohol.forEach(element => {
+        element.classList.remove("active");
+    })
+    contenedorSinAlcohol.forEach(element => {
         element.classList.remove("active");
     })
 });
@@ -53,6 +62,7 @@ liPorNombre.addEventListener("click", () => {
         liPL.classList.remove("active-a");
         liA.classList.remove("active-a");
         liCA.classList.remove("active-a");
+        liSA.classList.remove("active-a");
     });
     
     contenedorporLetra.forEach(element => {
@@ -63,9 +73,11 @@ liPorNombre.addEventListener("click", () => {
     });
     contenedorConAlcohol.forEach(element => {
         element.classList.remove("active");
-    }
-
-)});
+    })
+    contenedorSinAlcohol.forEach(element => {
+        element.classList.remove("active");
+    })
+});
 liAleatorio.addEventListener("click", () => {
     contenedoraleatorio.forEach(element => {
         element.classList.add("active");
@@ -73,6 +85,7 @@ liAleatorio.addEventListener("click", () => {
         liPL.classList.remove("active-a");
         liPN.classList.remove("active-a");
         liCA.classList.remove("active-a");
+        liSA.classList.remove("active-a");
     });
     
     contenedorporLetra.forEach(element => {
@@ -85,15 +98,19 @@ liAleatorio.addEventListener("click", () => {
     contenedorConAlcohol.forEach(element => {
         element.classList.remove("active");
     })
+    contenedorSinAlcohol.forEach(element => {
+        element.classList.remove("active");
+    })
     
 });
 liConAlcohol.addEventListener("click", () => {
     contenedorConAlcohol.forEach(element => {
         element.classList.add("active");
-        liCA.classList.add("active-a");
+        liCA.classList.add("active");
         liA.classList.remove("active-a");
         liPL.classList.remove("active-a");
         liPN.classList.remove("active-a");
+        liSA.classList.remove("active-a");
     });
     
     contenedorporLetra.forEach(element => {
@@ -104,6 +121,34 @@ liConAlcohol.addEventListener("click", () => {
         element.classList.remove("active");
     });
     contenedoraleatorio.forEach(element =>{
+        element.classList.remove("active");
+    })
+    contenedorSinAlcohol.forEach(element => {
+        element.classList.remove("active");
+    })
+    
+});
+liSinAlcohol.addEventListener("click", () => {
+    contenedorSinAlcohol.forEach(element => {
+        element.classList.add("active");
+        liCA.classList.remove("active-a");
+        liA.classList.remove("active-a");
+        liPL.classList.remove("active-a");
+        liPN.classList.remove("active-a");
+        liSA.classList.add("active-a");
+    });
+    
+    contenedorporLetra.forEach(element => {
+        element.classList.remove("active");
+
+    });
+    contenedorporNombre.forEach(element => {
+        element.classList.remove("active");
+    });
+    contenedoraleatorio.forEach(element =>{
+        element.classList.remove("active");
+    })
+    contenedorConAlcohol.forEach(element => {
         element.classList.remove("active");
     })
     
@@ -130,6 +175,9 @@ btn3.addEventListener("click", ()=> {
 liCA.addEventListener("click", () => {
     obtenerCoctelesConsinAlcohol(url4, resultadosContainer4);
 });
+liSA.addEventListener("click", () => {
+    obtenerCoctelesConsinAlcohol(url5, resultadosContainer5);
+});
 function obtenerCocteles(url2,input,resultadosContainer){
     const nombre = input.value;     
     fetch(url2 + nombre)
@@ -153,7 +201,7 @@ function obtenerCocteles(url2,input,resultadosContainer){
                         <h2>${coctel.strDrink}</h2>
                         <p><strong>Categoría: </strong>${coctel.strCategory}</p>
                         <p><strong>Instrucciones: </strong>${instructions}</p>
-                        <img src="${coctel.strDrinkThumb}" alt="coctel">
+                        <img src="${coctel.strDrinkThumb}" alt="coctel" loading="lazy">
                         
                     </div>
                 `;
@@ -188,7 +236,7 @@ function obtenerCoctelesAleatorio(url, resultadosContainer){
                     <h2>${coctel.strDrink}</h2>
                     <p><strong>Categoría: </strong>${coctel.strCategory}</p>
                     <p><strong>Instrucciones: </strong>${instructions}</p>
-                    <img src="${coctel.strDrinkThumb}" alt="coctel">
+                    <img src="${coctel.strDrinkThumb}" alt="coctel" loading="lazy">
                     
                 </div>
             `;
@@ -211,7 +259,7 @@ function obtenerCoctelesConsinAlcohol(url, resultadosContainer){
             html += `
                 <div class="resultado">
                     <h2>${coctel.strDrink}</h2>
-                    <img src="${coctel.strDrinkThumb}" alt="coctel">
+                    <img src="${coctel.strDrinkThumb}" alt="coctel" loading="lazy">
                     
                 </div>
             `;

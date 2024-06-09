@@ -105,7 +105,10 @@ h1{
     animation: color .3 ease;
     border: 1px solid var(--primary--);
 }
-.contenedor-general .resultado1,.contenedor-general .resultado2,.contenedor-general .resultado4{
+.contenedor-general .resultado1,
+.contenedor-general .resultado2,
+.contenedor-general .resultado4,
+.contenedor-general .resultado5{
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
