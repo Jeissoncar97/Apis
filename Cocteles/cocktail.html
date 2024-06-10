@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style-cocktail.css">
-    <title>prueba apis</title>
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+    <title>Todos los cocteles que puedas imaginar</title>
 </head>
 
 <body>
@@ -31,52 +32,54 @@
 
         </ul>
     </div>
-    <div class="contenedor-general porLetra">
+    <section class="contenedor-general porLetra">
         <div class="contenedor">
             <p>Ingrese la letra de la cual quieres consultar los cocteles (Tambien número)</p>
-            <input class="letra-coctel" type="text" maxlength="1">
-            <button class="btn1">buscar</button>
+            <input class="letra-coctel" type="text" maxlength="1" placeholder="a, b, c, etc">
+            <button class="btn1">Buscar</button>
             <div class="contenedor-resultado1">
                 <div class="resultado1"></div>
             </div>
         </div>
-    </div>
-    <div class="contenedor-general porNombre active">
+    </section>
+    <section class="contenedor-general porNombre active">
         <div class="contenedor ">
             <p>Ingrese el nombre de la cual quieres consultar los cocteles</p>
-            <input class="nombre-coctel" type="text" maxlength="20" placeholder="Margarita, mojito, etc">
-            <button class="btn2">buscar</button>
+            <input class="nombre-coctel" type="text" maxlength="20" required placeholder="Margarita, mojito, etc">
+            <button class="btn2">Buscar</button>
             <div class="contenedor-resultado2">
                 <div class="resultado2"></div>
             </div>
+
         </div>
-    </div>
-    <div class="contenedor-general aleatorio">
+    </section>
+    <section class="contenedor-general aleatorio">
         <div class="contenedor ">
             <p>Click para ver mas cocteles aleatorios</p>
             <button class="btn3">Nuevo</button>
             <div class="contenedor-resultado3">
+                <div class="cargand">Cargando...</div>
                 <div class="resultado3"></div>
             </div>
         </div>
-    </div>
-    <div class="contenedor-general conAlcohol">
+    </section>
+    <section class="contenedor-general conAlcohol">
         <div class="contenedor ">
             <p>Concteles con alcohol</p>
             <div class="contenedor-resultado4">
                 <div class="resultado4"></div>
             </div>
         </div>
-    </div>
-    <div class="contenedor-general sinAlcohol">
+    </section>
+    <section class="contenedor-general sinAlcohol">
         <div class="contenedor ">
             <p>Concteles Sin alcohol</p>
             <div class="contenedor-resultado5">
                 <div class="resultado5"></div>
             </div>
-            <div class="pagination"></div>
+
         </div>
-    </div>
+    </section>
     <script src="./script-cocktail.js"></script>
 </body>
 

@@ -28,7 +28,13 @@ const resultadosContainer2 = document.querySelector(".resultado2");
 const resultadosContainer3 = document.querySelector(".resultado3");
 const resultadosContainer4 = document.querySelector(".resultado4");
 const resultadosContainer5 = document.querySelector(".resultado5");
+const cargando = document.querySelector(".cargando")
+
+
 let contador = 1
+
+
+
 
 
 liPorLetra.addEventListener("click", () => { 
@@ -181,11 +187,12 @@ liSA.addEventListener("click", () => {
 function obtenerCocteles(url2,input,resultadosContainer){
     const nombre = input.value;     
     fetch(url2 + nombre)
-        .then(response => response.json())
-        .then(data => {
-            
+    .then(response => response.json())
+    .then(data => {
+        let html = '';
+        setTimeout(
+            () => {
             const cocteles = data.drinks;
-            let html = '';
             resultadosContainer.innerHTML = '';
             
             cocteles.forEach(coctel => {
@@ -201,7 +208,7 @@ function obtenerCocteles(url2,input,resultadosContainer){
                         <h2>${coctel.strDrink}</h2>
                         <p><strong>Categoría: </strong>${coctel.strCategory}</p>
                         <p><strong>Instrucciones: </strong>${instructions}</p>
-                        <img src="${coctel.strDrinkThumb}" alt="coctel" loading="lazy">
+                        <img src="${coctel.strDrinkThumb}" alt="coctel">
                         
                     </div>
                 `;
@@ -209,6 +216,10 @@ function obtenerCocteles(url2,input,resultadosContainer){
             });
 
             resultadosContainer.innerHTML = html;
+            }, 1000
+        )
+            
+            
         })
         .catch(error => {
             console.log(error);
@@ -224,7 +235,9 @@ function obtenerCoctelesAleatorio(url, resultadosContainer){
         let html = '';
         resultadosContainer.innerHTML = '';
         
+        setTimeout(() =>{
         cocteles.forEach(coctel => {
+            cargando.style.opacity = 0;
             if (coctel.strInstructionsES != undefined)
             {
                 instructions = coctel.strInstructionsES
@@ -243,6 +256,9 @@ function obtenerCoctelesAleatorio(url, resultadosContainer){
 
         });
         resultadosContainer.innerHTML = html;
+        }, 1500)
+        cargando.style.opacity = 1;
+
     })
 }
 
@@ -250,21 +266,26 @@ function obtenerCoctelesConsinAlcohol(url, resultadosContainer){
     fetch(url)
     .then(respose =>respose.json())
     .then(data => {
-        const cocteles = data.drinks;
-        console.log(cocteles)
-        let html = '';
-        resultadosContainer.innerHTML = '';
-        
-        cocteles.forEach(coctel => {
-            html += `
-                <div class="resultado">
-                    <h2>${coctel.strDrink}</h2>
-                    <img src="${coctel.strDrinkThumb}" alt="coctel" loading="lazy">
-                    
-                </div>
-            `;
-        })
+        setTimeout(
+            () =>{
+                
+                const cocteles = data.drinks;
+                let html = '';
+                
+                resultadosContainer.innerHTML = '';
+            
+                cocteles.forEach(coctel => {
+                    html += `
+                        <div class="resultado">
+                            <h2>${coctel.strDrink}</h2>
+                            <img src="${coctel.strDrinkThumb}" alt="coctel">
+                            
+                        </div>
+                    `;
+                })
         resultadosContainer.innerHTML = html;
+        },1500)
+        
 
     })
 }
