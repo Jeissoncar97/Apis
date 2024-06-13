@@ -1,6 +1,7 @@
-function fetchMoviesApi() {
-    const movie = "coco";
-    const url = `https://movie-database-alternative.p.rapidapi.com/?s=${movie}&r=json&page=1`;
+async function fetchMoviesApi() {
+    const movie = "morty";
+    const page = 1
+    const url = `https://movie-database-alternative.p.rapidapi.com/?s=${movie}&r=json&page=${page}`;
     const options = {
         method: 'GET',
         headers: {
@@ -9,39 +10,45 @@ function fetchMoviesApi() {
         }
     };
 
-    fetch(url, options)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(response => {
-            if (response.Search) {
-                console.log(response)
-                displayMovies(response.Search);
-            } else {
-                console.error('No movies found');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    const response = await fetch(url, options)
+    const movies = await response.json()
+    console.log(movies)
+
+    movies.Search.forEach((movie) => 
+        createMovieItem(
+        movie.Title,
+        movie.Poster,
+        movie.Type,
+        movie.Year
+    ) )
+
+
 }
 
-function displayMovies(movies) {
-    const main = document.querySelector('#movie-container');
-    main.innerHTML = ''; // Limpiar contenedor antes de agregar nuevas películas
+fetchMoviesApi()
 
-    movies.forEach(movie => {
-        const article = document.createRange().createContextualFragment(`
-            <article>
-                <img src="${movie.Poster}" alt="${movie.Title}">
-            </article>
-        `);
-        main.append(article);
-    });
+function createMovieItem(title, image,type, year) {
+    const movieElement = document.querySelector('#main')
+    const itemContainer = document.createElement('div');
+    itemContainer.classList.add('ContainerMovies')
+
+    const titleElement = document.createElement("h2")
+    titleElement.textContent = title
+    itemContainer.append(titleElement)
+
+    const imageElement = document.createElement('img')
+    imageElement.setAttribute("src", image)
+    itemContainer.append(imageElement)
+
+    const typeMovie = document.createElement('p')
+    typeMovie.textContent = type
+    itemContainer.append(typeMovie)
+
+    const yearMovie = document.createElement("p")
+    yearMovie.textContent = year
+    itemContainer.append(yearMovie)
+
+    movieElement.append(itemContainer)
 }
 
-// Llama a la función fetchMoviesApi al cargar la página
-document.addEventListener('DOMContentLoaded', fetchMoviesApi);
+
