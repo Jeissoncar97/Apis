@@ -86,7 +86,7 @@ function paginationMovies() {
 }
 
 function handleEvent(event) {
-  if (event.type === "click" || (event.type === "keydown" && event.key === "Enter")) {
+  if (event.type === "click" || (event.type === "keydown" && event.key === "Enter" )) {
     currentPage = 1; // Reiniciar a la primera página en una nueva búsqueda
     fetchMoviesApi(currentPage);
   }
