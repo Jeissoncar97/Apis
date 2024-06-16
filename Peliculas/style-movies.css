@@ -46,6 +46,7 @@ secction{
         border: none;
         cursor: pointer;
         transition: all .4s ease;
+        box-shadow: 3px 2px 3px rgba(96, 96, 96, 0.184);
         &:hover{
             background-color: var(--blue-oscuro--);
             color: white;
@@ -72,6 +73,8 @@ secction{
 }
 .containerMovies{
     background-color: white;
+    box-shadow: 3px 2px 3px rgba(96, 96, 96, 0.184);
+    border-radius: 10px;
     h2{
         padding: 10px 0;
     }
@@ -92,9 +95,11 @@ secction{
         margin: 0 20px;
         cursor: pointer;
         border-radius: 10px;
+        box-shadow: 3px 2px 3px rgba(96, 96, 96, 0.184);
+
         transition: background-color .3s ease;
         &:hover{
-            background-color: var(--blue-oscuro--);
+            background-color: var(--blue-claro--);
             color: white;
         }
     }
